@@ -1,0 +1,98 @@
+API documentation
+
+NSWCrimeAPI: 1.0.0
+info:
+	title: NSW crime data API
+	description: API to store and retrieve NSW crime statistics
+	version: 1.0.0
+
+servers:
+	-http://127.0.0.1:5000
+
+root of collection: /lga
+paths:
+	/login
+		POST:
+			description: login
+			Parameters:
+				-name: username
+				 required: true
+				-password
+				 required: true
+			response:
+				'200': Welcome back, Admin!
+				'401': Unauthorized
+				'404': Required usename and password
+
+
+	/lga
+		POST:
+			parameters:
+				-lga: district name
+				 required: true
+				-code: postcode
+				 required:true
+			description:
+				post request to retrieve and store crime data for the supplied lga or code in database
+			example response:
+				input: /lga
+				'200': Already created return ATOM file,
+				'201': Created, return ATOM file
+				'400': Cannot find LGA for postcode
+				'401': Unauthorized
+				'404': Cannot find LGA
+
+	/lga/<lgaName>
+		GET:
+			parameters:
+				-lgaName: lga name
+				 required: true
+			description:
+				retrieve data
+			Query parameters:
+				-tag : option for data format. 1 for json 0 for ATOM
+				 required: true
+
+			example: http://127.0.0.1:5000/lga/sydney?tag=0
+			response:
+				'200': return ATOM file of Sydney
+				'404': No record found
+				
+			example: http://127.0.0.1:5000/lga/sydney?tag=1
+				'200': return JSON file of Sydney
+				'404': No record found
+				
+		
+		DELETE:
+			parameters:
+				-lgaName: lga name
+				 required: true
+			description:
+				remove lga by name from the database
+			response:
+				'200': ok
+				'401': Unauthorize
+				'404': no record. operation fail
+
+
+
+	/lga/filter
+		GET:
+			parameters:
+				-lgaName:
+				 required: true
+				-operator: or, and , eq
+				 required: true
+				-year:
+				 required: optional
+				ALL parameters are CASE INSENSITIVE and allow extra spacing
+
+			description:
+				return a list of filter result in ATOM format
+	
+			example query: /lga/filter?lgaName eq Bayside or lgaName eq Ballina
+			example response:
+				input: /orderlist/prepared
+				'200': return ATOM file
+				'404': Filter mode not supported
+				'404': No record found

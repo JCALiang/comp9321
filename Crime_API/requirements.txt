@@ -1,0 +1,12 @@
+mongoengine
+flask
+flask_cors
+functools
+requests
+csv
+os
+json
+werkzeug.contrib.atom
+datetime
+dicttoxml
+itsdangerous

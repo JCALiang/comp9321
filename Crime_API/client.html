@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+   <title>NSW Crime Data Import and Publication Service</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>NSW Crime Data Import and Publication Service</h1>
+
+      <div class="container">
+      <p><strong>Log In To Post and Delete</strong></p>
+
+      <form method="POST"  role="form" onsubmit="return false;">
+        Name: <input type="text" name="name" id="name">
+                  <br>
+        Password : <input type="password" name="pass" id="pass"> <br>
+                  <buttom class="btn btn-primary btn-sm" name="btn2" value="Submit" onclick="login()">Submit </buttom>
+        <br>
+        <p id="login"></p>
+      </form>
+    </div>
+
+
+    <hr>
+
+      <div class="container">
+    	<p><strong>LGA Data Import (i.e Post Operation)</strong></p>
+
+      <form id="post" action=""  method="post" onsubmit="return false;">
+        LGA name: <input type="text" name="lga" id="lga">
+                  <buttom class="btn btn-primary btn-sm" name="btn1" value="Submit" onclick="postlga()">Submit </buttom>
+                  <br>
+        Postcode : <input type="number" name="code" id="code">
+                  <buttom class="btn btn-primary btn-sm" name="btn2" value="Submit" onclick="postcode()">Submit </buttom>
+      </form>
+
+    	<strong> post status: </strong> <p id="ps"></p>
+      <strong> post response: </strong> <div id="pr"></div>
+      </div>
+
+      <hr>
+
+      <div class="container">
+      <p><strong>LGA Data Delete </strong></p>
+       <form id="del" action=""  method="post" onsubmit="return false;">
+        LGA name: <input type="text" name="dlga" id="dlga">
+                  <buttom class="btn btn-primary btn-sm"  name="btn3" value="Submit" onclick="del_lga()">Delete</buttom>
+
+         </form>
+        <br>
+        <strong>delete status: </strong><p id="ds"></p>
+    
+      </div>
+
+
+      <hr>
+      <div class="container">
+      <p><strong>LGA Data Retrieve (i.e.GET operation) </strong></p>
+       <form name="get" action=""  method="post">
+        <strong> LGA name: </strong>
+                  <input type="text" name="glga" id="glga">
+                  <input type="checkbox" name="single" id="single" checked> JSON format? 
+                  <buttom class="btn btn-primary btn-sm" name="submit" onclick="get_lga()" value="Submit"/> Get  </buttom>
+        <br>
+
+        <strong> Get whole collection: </strong>
+                  <input type="checkbox" name="all" id="all" checked> JSON format? 
+                  <buttom class="btn btn-primary btn-sm" name="submit" onclick="get_all()" value="Submit"/> Get </buttom>
+                  <br>
+        <strong> Get status: </strong> <p id="GetStatus"></p>
+        <strong> Get response: </strong> <div id="GetResponse"></div>
+                 
+      </form>
+      </div>
+
+
+       <hr>
+      <div class="container">
+      <p><strong>LGA Data Filter </strong></p>
+       <form name="get" action=""  method="post">
+        <strong> Query Type 1: Enter lgaName1 for single query, lgaName 2 for join query OR</strong><br>
+                  lgaName1: <br>
+                  <input type="text" id="flga1"><br>
+                  lgaName2: <br>
+                  <input type="text" id="flga2"> <br>
+                  <buttom class="btn btn-primary btn-sm" name="submit" onclick="filter_lga1()" value="Submit"/> Filter  </buttom>
+        <br>
+        <br>
+        <strong> Query Type 2: Enter both lgaName1 and year ex: ballina and 2015 for Ballina Record in year 2015</strong><br>
+                  lgaName1: <br>
+                  <input type="text"  id="flga3"><br>
+                  year: <br>
+                  <input type="number" id="year"><br>
+                  <buttom class="btn btn-primary btn-sm" name="submit" onclick="filter_lga2()" value="Submit"/> Filter </buttom>
+                  <br>
+        <strong> Get status: </strong> <p id="FilterStatus"></p>
+        <strong> Get response: </strong> <div id="FilterResponse"></div>
+                 
+      </form>
+      </div>
+
+
+<script>
+  const baseURL= 'http://127.0.0.1:5000';
+  var token;
+
+  function login(){
+    var name= document.getElementById('name').value;
+    var password= document.getElementById('pass').value;
+    url= baseURL+'/login'
+
+     fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({
+                username: name,
+                password: password
+            }),
+ 
+          headers: {'Content-Type' : 'application/json'}
+            }).then(function(response) { 
+              console.log(response.status);
+              if(response.status==401){
+                document.getElementById('login').innerHTML= "Invalid user or password";
+              };
+              if(response.status==200){
+                document.getElementById('login').innerHTML= "Welcome back. Admin!";
+              };
+              return response.json(); })
+              .then(function(data) {
+                token=data.token;
+            });
+  }
+
+
+
+  function change(str){
+      var string = str.replace(/</g, '&lt;'); //replaces all '<' with its escape character
+      var string = string.replace(/>/g, '&gt;'); //replaces all '>' with its escape character
+      var string = string.replace(/(&lt;|&gt;|=|%|\/|\*|-|,|;|\+|<|>)/g, "<span class=\"sc\">$1</span>");
+      return string;
+  }
+
+  function atom(p){
+      xml=formatXml(p);
+      xml_escaped = xml.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/ /g, '&nbsp;').replace(/\n/g,'<br />');
+      
+      $('#pr').append(xml_escaped);
+      return 0
+  }
+
+  function atomf(p){
+     xml=formatXml(p);
+      xml_escaped = xml.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/ /g, '&nbsp;').replace(/\n/g,'<br />');
+      var tcontent = document.createElement('p');
+          tcontent.innerHTML = xml_escaped;
+
+      var string1= '<?xml version="1.0" encoding="utf-8"?>';
+      var string2= '<feed xmlns="http://www.w3.org/2005/Atom">';
+      var string3= '</feed>';
+      $('#GetResponse').append(change(string1)).append(change(string2)).append(xml_escaped).append(change(string3));
+      return 0
+  }
+
+
+  function atomg(p){
+     xml=formatXml(p);
+      xml_escaped = xml.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/ /g, '&nbsp;').replace(/\n/g,'<br />');
+      var tcontent = document.createElement('p');
+          tcontent.innerHTML = xml_escaped;
+
+      var string1= '<?xml version="1.0" encoding="utf-8"?>';
+      var string2= '<feed xmlns="http://www.w3.org/2005/Atom">';
+      var string3= '</feed>';
+      $('#FilterResponse').append(change(string1)).append(change(string2)).append(xml_escaped).append(change(string3));
+      return 0
+  }
+
+  function updatePostCell(url, name, code){
+      document.getElementById('ps').innerHTML= "Waiting for reply....";
+      document.getElementById('pr').innerHTML= "";
+
+     $.ajax({
+        type: 'POST',
+        url: url,
+        data: JSON.stringify({ lgaName: name, postcode:code}),
+        dataType: "json",
+        contentType: 'application/json;charset=UTF-8',
+        headers: {
+        'Auth-Token' : token},
+        statusCode: {
+          400: function() {
+                  alert('No LGA found for postcode');
+                  document.getElementById('ps').innerHTML= "400: No LGA found";
+          },
+          404: function() {
+                  alert('No LGA found');
+                  document.getElementById('ps').innerHTML= "404: No LGA found";
+
+          },
+          401: function() {
+                  alert('Unauthorized');
+                  document.getElementById('ps').innerHTML= "401: Unauthorized";
+
+          },
+      
+          200: function(data, status, xhr) {
+                document.getElementById('ps').innerHTML= "200: OK";
+                var p=data.responseText;
+                atom(p);
+          },
+
+          201: function(data, status, xhr) {
+                document.getElementById('ps').innerHTML= "201: Created";
+               var p=data.responseText;
+                atom(p);
+        
+            },
+        }
+      });
+  }
+
+
+  function output(inp) {
+    document.getElementById('GetResponse').appendChild(document.createElement('pre')).innerHTML = inp;
+  }
+
+  function updateGetCellJson(url){
+    document.getElementById('GetStatus').innerHTML= "Waiting for reply....";
+    document.getElementById('GetResponse').innerHTML= "";
+
+              fetch(url)
+                  .then(function(response) {
+                    document.getElementById('GetStatus').innerHTML=response.status;
+                    return response.json();
+                  })
+                  .then(function(myJson) {
+                    console.log(myJson);
+                    var str = JSON.stringify(myJson, null, 4);
+                        output(str)
+                  });
+
+   
+  }
+
+
+  function updateGetCellAtom(url){
+      document.getElementById('GetStatus').innerHTML= "Waiting for reply....";
+      document.getElementById('GetResponse').innerHTML= "";
+
+
+       $.ajax({
+        type: 'GET',
+        url: url,
+        statusCode: {
+          404: function() {
+                  alert('No LGA found');
+                  document.getElementById('GetStatus').innerHTML= "404: No LGA found";
+
+          },
+         200: function(data, status, xhr) {
+                document.getElementById('GetStatus').innerHTML= "200: OK";
+
+                console.log(data.responseText);
+                var p=data.getElementsByTagName('feed')[0].innerHTML;
+                atomf(p);
+            },
+
+          }
+  
+      
+       
+  
+      })
+
+  }
+
+  function updateFilter1(url){
+       document.getElementById('FilterStatus').innerHTML= "Waiting for reply....";
+      document.getElementById('FilterResponse').innerHTML= "";
+
+
+       $.ajax({
+        type: 'GET',
+        url: url,
+        statusCode: {
+          404: function(data) {
+                  alert(data.responseText);
+                  document.getElementById('FilterStatus').innerHTML= "404: No LGA found";
+
+          },
+         200: function(data, status, xhr) {
+                document.getElementById('FilterStatus').innerHTML= "200: OK";
+
+                console.log(data.responseText);
+                var p=data.getElementsByTagName('feed')[0].innerHTML;
+                atomg(p);
+            },
+
+          }
+       
+  
+      })
+
+  }
+
+  function updateFilter2(url){
+       document.getElementById('FilterStatus').innerHTML= "Waiting for reply....";
+      document.getElementById('FilterResponse').innerHTML= "";
+
+
+       $.ajax({
+        type: 'GET',
+        url: url,
+        statusCode: {
+          404: function(data) {
+                  alert(data.responseText);
+                  document.getElementById('FilterStatus').innerHTML= "404: No LGA found";
+
+          },
+         200: function(data, status, xhr) {
+                document.getElementById('FilterStatus').innerHTML= "200: OK";
+
+                console.log(data.responseText);
+                var p=data.responseText;
+                var xml=formatXml(p);
+                var xml_escaped = xml.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/ /g, '&nbsp;').replace(/\n/g,'<br />');
+      
+                 $('#FilterResponse').append(xml_escaped);
+            },
+
+          }
+       
+  
+      })
+
+  }
+
+
+
+  function postlga(){
+    var name= document.getElementById('lga').value;
+    var url= baseURL+'/lga';
+    updatePostCell(url, name, 0);
+  };
+
+
+  function postcode(){
+    var code= document.getElementById('code').value;
+    var url=baseURL+'/lga';
+    updatePostCell(url,0, code);
+
+  };
+
+
+  function get_lga(){
+    var glga = document.getElementById('glga').value;
+    var jason = document.getElementById("single").checked;
+    if(jason){
+      var url= baseURL+'/lga/'+glga+'?tag=1';
+      updateGetCellJson(url);
+    } else {
+      var url= baseURL+'/lga/'+glga+'?tag=0';
+      updateGetCellAtom(url);
+    }
+            
+  }
+
+  function get_all(){
+     
+      var jason = document.getElementById("all").checked;
+      if(jason){
+        var url= baseURL+'/lga?tag=1';
+        updateGetCellJson(url);
+      } else {
+        var url= baseURL+'/lga?tag=0';
+        updateGetCellAtom(url);
+      }
+
+
+  }
+
+  function del_lga(){
+    var lga=document.getElementById('dlga').value;
+    url= baseURL+'/lga/'+lga;
+    document.getElementById('ds').innerHTML= "Waiting for reply...";
+    
+
+     $.ajax({
+        type: 'Delete',
+        url: url,
+        cache: false,
+        headers: {
+        'Auth-Token' : token},
+        statusCode: {
+          200: function() {
+                  document.getElementById('ds').innerHTML= "200: OK";
+          },
+          404: function() {
+                  alert('No LGA found');
+                  document.getElementById('ds').innerHTML= "404: No LGA found";
+          },
+          401: function(){
+              alert('Unauthorized');
+              document.getElementById('ds').innerHTML= "401: Unauthorized";
+          }
+        }
+        });
+
+    }
+
+    function filter_lga1(){
+      var flga1 = document.getElementById('flga1').value;
+      var flga2 = document.getElementById("flga2").value;
+      var url= baseURL+'/lga/filter?lgaName eq '+flga1+' or lgaName eq '+flga2;
+      updateFilter1(url);
+
+    }
+
+    function filter_lga2(){
+      var flga3 = document.getElementById('flga3').value;
+      var year = document.getElementById("year").value;
+      var url= baseURL+'/lga/filter?lgaName eq '+flga3+' and year eq '+year;
+      updateFilter2(url);
+
+    }
+
+  /* format xml function credit to sente: https://gist.github.com/sente/1083506 */
+  function formatXml(xml) {
+    var formatted = '';
+    var reg = /(>)(<)(\/*)/g;
+    xml = xml.replace(reg, '$1\r\n$2$3');
+    var pad = 0;
+    jQuery.each(xml.split('\r\n'), function(index, node) {
+        var indent = 0;
+        if (node.match( /.+<\/\w[^>]*>$/ )) {
+            indent = 0;
+        } else if (node.match( /^<\/\w/ )) {
+            if (pad != 0) {
+                pad -= 4;
+            }
+        } else if (node.match( /^<\w[^>]*[^\/]>.*$/ )) {
+            indent = 4;
+        } else {
+            indent = 0;
+        }
+
+        var padding = '';
+        for (var i = 0; i < pad; i++) {
+            padding += '  ';
+        }
+
+        formatted += padding + node + '\r\n';
+        pad += indent;
+    });
+
+    return formatted;
+}
+
+
+   
+  
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>
