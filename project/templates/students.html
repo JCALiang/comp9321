@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Students List</title>
+</head>
+<body>
+<table>
+  {% if students%}
+  {% for s in students: %}
+  <tr>
+      <td><a href="{{url_for('edit', id= s.id)}}">edit</a></td>
+      <td><a href="{{url_for('delete', id =s.id)}}">delete</a></td>
+      <td>{{s.id}}</td>
+      <td>{{s.first_name}}</td>
+      <td>{{s.last_name}}</td>
+      <td>{{s.gender}}</td>
+  </tr>
+  {% endfor %}
+  {%endif%}
+</table>
+<a href="{{url_for('add')}}">Add a new Student</a>
+<a href="{{url_for('save')}}">Save</a>
+</body>
+</html>
