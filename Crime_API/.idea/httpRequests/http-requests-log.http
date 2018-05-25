@@ -1,0 +1,476 @@
+GET http://127.0.0.1:5000/lga?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1&tag=1&tag=1&tag='1'&tag=1&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-28T092751.404.json
+
+###
+
+GET http://127.0.0.1:5000/lga?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1&tag=1&tag=1&tag='1'&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092739.404.json
+
+###
+
+GET http://127.0.0.1:5000/lga?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1&tag=1&tag=1&tag='1'&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092736.404.json
+
+###
+
+GET http://127.0.0.1:5000/lga?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1&tag=1&tag=1&tag='1'&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092733.404.json
+
+###
+
+GET http://127.0.0.1:5000/lga?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1&tag=1&tag=1&tag='1'
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092642.404.json
+
+###
+
+GET http://127.0.0.1:5000/lga?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092633.404.json
+
+###
+
+GET http://127.0.0.1:5000/lga?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092625.404.json
+
+###
+
+GET http://127.0.0.1:5000/lga?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092555.200.txt
+
+###
+
+GET http://127.0.0.1:5000/lga/ballina?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092550.200.txt
+
+###
+
+GET http://127.0.0.1:5000/lga/ballina?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092515.200.txt
+
+###
+
+GET http://127.0.0.1:5000/lga/bal?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092450.404.json
+
+###
+
+GET http://127.0.0.1:5000/lga/sydney?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092443.200.txt
+
+###
+
+GET http://127.0.0.1:5000/lga?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092413.200.txt
+
+###
+
+GET http://localhost:5000/lga?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T092231.200.txt
+
+###
+
+GET http://localhost:5000/lga?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: text
+
+<> 2018-04-28T091755.200.txt
+
+###
+
+GET http://localhost:5000/lga?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-28T091656.200.txt
+
+###
+
+GET http://localhost:5000/lga/sydney?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0&tag=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-28T091629.200.txt
+
+###
+
+GET http://localhost:5000/lga/sydney?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-28T091558.200.txt
+
+###
+
+GET http://localhost:5000/lga/sydney?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100&tag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-28T091523.200.txt
+
+###
+
+GET http://localhost:5000/lga/sydney?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1&tag=100
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-04-28T091440.200.txt
+
+###
+
+GET http://localhost:5000/lga/sydney?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-04-28T091409.200.txt
+
+###
+
+GET http://localhost:5000/lga/sydney?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0&tag=0
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-04-28T091402.200.txt
+
+###
+
+GET http://localhost:5000/lga/sydney?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1&tag=0
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-04-28T091337.200.txt
+
+###
+
+GET http://localhost:5000/lga/sydney?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-04-28T091324.200.txt
+
+###
+
+POST http://localhost:5000/lga/sydney?tag=0&tag=0&tag=1&username=admin&password=1234&tag=1
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2018-04-28T091310.405.html
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+  {"username": "admin",     "password":"1234"  }
+
+<> 2018-04-28T091222.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+  {"username": "admin",     "password":" password"  }
+
+<> 2018-04-28T091202.401.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json/application
+
+  {"username": "admin",     "password":" password"  }
+
+<> 2018-04-28T091108.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json/application
+
+  {username: admin,      password: password  }
+
+<> 2018-04-28T091033.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json
+
+  {username: admin,      password: password  }
+
+<> 2018-04-28T090946.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json
+
+  {username: admin,      password: password  }
+
+<> 2018-04-28T090920.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json
+
+  {username: admin,      password: password  }
+
+<> 2018-04-28T090509.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json
+
+  {username: admin,      password: password  }
+
+<> 2018-04-28T090151.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json
+
+   username: admin,      password: password
+
+<> 2018-04-28T085920.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json
+
+data={   username: admin,      password: password  }
+
+<> 2018-04-28T085903.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json
+
+{   username: admin,      password: password  }
+
+<> 2018-04-28T085854.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json/application
+
+{                 username: name,                 password: password             }
+
+<> 2018-04-28T085818.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json/application
+
+data={username:admin, password:1234}
+
+<> 2018-04-28T085639.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json/application
+
+{username:admin, password:1234}
+
+<> 2018-04-28T085430.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json
+
+{username:admin, password:1234}
+
+<> 2018-04-28T085325.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+Content-Type: json
+
+data={username:admin, password:1234}
+
+<> 2018-04-28T085316.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+
+data={username:admin, password:1234}
+
+<> 2018-04-28T085227.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+
+{username:'admin', 'password':1234}
+
+<> 2018-04-28T084002.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+
+{username:'admin', 'password':1234}
+
+<> 2018-04-28T083844.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+
+username=admin
+
+<> 2018-04-28T083805.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1&username=admin&password=1234
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-28T083731.200.json
+
+###
+
+POST http://localhost:5000/login?tag=0&tag=0&tag=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-28T083709.200.json
+
+###
+
+POST http://localhost:5000/lga/login?tag=0&tag=0&tag=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-28T083644.405.html
+
+###
+
+POST http://localhost:5000/lga?tag=0&tag=0&tag=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-28T083638.401.json
+
+###
+
+GET http://localhost:5000/lga/sydney?tag=0&tag=0&tag=1
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-04-28T083557.200.txt
+
+###
+
